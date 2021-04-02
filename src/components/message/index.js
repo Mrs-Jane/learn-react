@@ -4,8 +4,9 @@ const Message = (props) => {
     const {author, text} = props;
 
     return (
-        <div>
-            <b>{author}:</b> {text}
+        <div className='chat__message'>
+            <div>{text}</div>
+            <div className='chat__author'>{author}</div>
         </div>
     )
 }

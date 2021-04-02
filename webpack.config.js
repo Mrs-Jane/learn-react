@@ -1,7 +1,7 @@
 const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
@@ -21,7 +21,7 @@ module.exports = {
         alias: {
             '@': path.resolve(__dirname, 'src'),
             '@components': path.resolve(__dirname, 'src', 'components'),
-            //'@styles': path.resolve(__dirname, 'src', 'styles'),
+            '@styles': path.resolve(__dirname, 'src', 'styles'),
             '@pages': path.resolve(__dirname, 'src', 'pages'),
             '@utils': path.resolve(__dirname, 'src', 'utils'),
         },
@@ -32,17 +32,17 @@ module.exports = {
             filename: 'index.html',
             template: path.resolve(__dirname, 'public', 'index.html'),
         }),
-        /*new MiniCssExtractPlugin({
+        new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[id].css',
-        }),*/
+        }),
     ],
     module: {
         rules: [
-            /*{
+            {
                 test: /\.(scss|css)$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-            },*/
+            },
             {
                 test: /\.js$|jsx$/,
                 exclude: /node_modules/,

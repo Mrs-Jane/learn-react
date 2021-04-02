@@ -12,7 +12,7 @@ class MessageField extends Component{
             />);
 
         return (
-            <div>
+            <div className='chat__messages'>
                 {Messages}
             </div>
         );
