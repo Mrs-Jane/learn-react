@@ -1,7 +1,7 @@
 import {AUTHORS} from '@utils/constants';
 
-const Message = (props) => {
-    const {author, text} = props;
+const Message = ({author, text}) => {
+    const me = author === AUTHORS.ME;
 
     return (
         <div className='chat__message'>

@@ -1,23 +1,29 @@
-import {Component} from 'react';
 import Message from '@components/message';
+import Form from '@components/form';
 
-class MessageField extends Component{
-    render() {
-        const {messages} = this.props;
-        const Messages = messages.map((el) =>
-            <Message
-                key={el.id}
-                author={el.author}
-                text={el.text}
-            />);
+const MessageField = ({messages, chats, chatId, form}) => {
+    const Messages = [];
 
-        return (
+    for (let messageId of chats[chatId].messageList) {
+        if (messages[messageId]) {
+            Messages.push(
+                <Message
+                    key={messageId}
+                    text={messages[messageId].text}
+                    author={messages[messageId].author}
+                />
+            )
+        }
+    }
+
+    return (
+        <div className='chat__box'>
             <div className='chat__messages'>
                 {Messages}
             </div>
-        );
-    }
+            <Form form={form} chatId={chatId} />
+        </div>
+    );
 }
-
 
 export default MessageField;
