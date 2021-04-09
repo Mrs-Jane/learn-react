@@ -14,16 +14,22 @@ export default class Form extends Component {
         });
     }
 
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.form(this.state.text);
+        this.setState({
+            text: ''
+        });
+    }
+
     componentDidMount() {
         this.textInput.current.focus();
     }
 
-    onSubmit = (e) => {
-        e.preventDefault();
-        this.props.onAdd(this.state.text);
-        this.setState({
-            text: ''
-        });
+    componentDidUpdate(prevProps) {
+        if (Object.keys(this.props.chatId) !== Object.keys(prevProps.chatId)) {
+            this.textInput.current.focus();
+        }
     }
 
     render() {
@@ -33,7 +39,7 @@ export default class Form extends Component {
                     placeholder='Пиши тут...'
                     onChange={this.onValueChange}
                     value={this.state.text}
-                    ref={this.textInput}
+                    inputRef={this.textInput}
                     variant='outlined'
                     style={{width: '100%'}}
                 />

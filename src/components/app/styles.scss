@@ -28,11 +28,18 @@ body{
 
     &__header{
         padding: 30px 25px;
-        font-weight: bold;
-        font-size: 40px;
-        line-height: 44px;
-        text-align: center;
         border-bottom: 1px solid #ddd;
+
+        &__title{
+            font-weight: bold;
+            font-size: 40px;
+            line-height: 44px;
+            text-align: center;
+        }
+
+        &__link{
+            text-align: right;
+        }
     }
 
     &__content{
