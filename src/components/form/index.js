@@ -16,7 +16,7 @@ export default class Form extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.form(this.state.text);
+        this.props.handlerMessage(this.state.text);
         this.setState({
             text: ''
         });

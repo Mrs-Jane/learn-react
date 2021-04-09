@@ -42,6 +42,11 @@ body{
         }
     }
 
+    &__profile{
+        padding: 30px 25px;
+        border-bottom: 1px solid #ddd;
+    }
+
     &__content{
         display: flex;
         justify-content: space-between;
