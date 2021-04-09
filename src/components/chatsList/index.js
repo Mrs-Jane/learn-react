@@ -1,48 +1,47 @@
-import {Component} from 'react';
+import {useCallback, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {addChat} from '@store/chatsList/actions';
 import {List, ListItem, ListItemText, Typography, TextField} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 
-export default class ChatsList extends Component{
-    state = {
-        text: ''
-    }
+const ChatsList = () => {
+    const [inputValue, setInputValue] = useState('');
+    const chats = useSelector((state) => state.chats);
+    const dispatch = useDispatch();
 
-    onValueChange = (e) => {
-        this.setState({
-            text: e.target.value
-        });
-    }
+    const onValueChange = useCallback((e) => {
+        setInputValue(e.target.value);
+    }, []);
 
-    onSubmit = (e) => {
+    const onSubmit = useCallback((e) => {
         e.preventDefault();
-        this.props.addChat(this.state.text);
-        this.setState({
-            text: ''
-        });
-    }
+        const value = inputValue.trim();
+        if (!value) return;
+        dispatch(addChat(value));
+        setInputValue('');
+    }, [inputValue, dispatch]);
 
-    render() {
-        const {chats} = this.props;
-        const ListItems = Object.keys(chats).map(chatId => (
-            <Link to={`/chat/${chatId}`} key={chatId}>
-                <ListItem button>
-                    <ListItemText primary={<Typography>{chats[chatId].name}</Typography>}/>
-                </ListItem>
-            </Link>
-        ));
+    const ListItems = Object.keys(chats).map(chatId => (
+        <Link to={`/chat/${chatId}`} key={chatId}>
+            <ListItem button>
+                <ListItemText primary={<Typography>{chats[chatId].name}</Typography>} />
+            </ListItem>
+        </Link>
+    ));
 
-        return (
-            <List>
-                {ListItems}
-                <form onSubmit={this.onSubmit}>
-                    <TextField
-                        type='text'
-                        label='Добавить чат'
-                        onChange={this.onValueChange}
-                        value={this.state.text}
-                    />
-                </form>
-            </List>
-        );
-    }
+    return (
+        <List>
+            {ListItems}
+            <form onSubmit={onSubmit}>
+                <TextField
+                    type='text'
+                    label='Добавить чат'
+                    onChange={onValueChange}
+                    value={inputValue}
+                />
+            </form>
+        </List>
+    );
 }
+
+export default ChatsList;
