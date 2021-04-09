@@ -26,12 +26,6 @@ export default class Form extends Component {
         this.textInput.current.focus();
     }
 
-    componentDidUpdate(prevProps) {
-        if (Object.keys(this.props.chatId) !== Object.keys(prevProps.chatId)) {
-            this.textInput.current.focus();
-        }
-    }
-
     render() {
         return (
             <form className='chat__form' onSubmit={this.onSubmit}>

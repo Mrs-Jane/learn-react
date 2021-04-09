@@ -1,7 +1,7 @@
-import {createStore, combineReducers} from "redux";
-import {chatsListReducer} from "./chatsList/reducer";
-import {messagesReducer} from "./messages/reducer";
-import {profileReducer} from "./profile/reducer";
+import {createStore, combineReducers} from 'redux';
+import {chatsListReducer} from './chatsList/reducer';
+import {messagesReducer} from './messages/reducer';
+import {profileReducer} from './profile/reducer';
 
 const store = createStore(
     combineReducers({

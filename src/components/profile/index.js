@@ -14,9 +14,7 @@ const Profile = () => {
 
     const handlerSubmit = useCallback((e) => {
         e.preventDefault();
-
         dispatch(changeName(value));
-
         setValue('');
     }, [value, dispatch]);
 
@@ -24,7 +22,7 @@ const Profile = () => {
         <div className='chat__profile'>
             <div>{name}</div>
             <form onSubmit={handlerSubmit}>
-                <TextField label='Введите имя' value={value} onChange={handlerInputChange}/>
+                <TextField label='Введите другое имя' value={value} onChange={handlerInputChange}/>
             </form>
         </div>
     );

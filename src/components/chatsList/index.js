@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {addChat} from "@store/chatsList/actions";
+import {addChat} from '@store/chatsList/actions';
 import {List, ListItem, ListItemText, Typography, TextField} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 
@@ -14,6 +14,7 @@ const ChatsList = () => {
     }, []);
 
     const onSubmit = useCallback((e) => {
+        e.preventDefault();
         const value = inputValue.trim();
         if (!value) return;
         dispatch(addChat(value));
@@ -23,7 +24,7 @@ const ChatsList = () => {
     const ListItems = Object.keys(chats).map(chatId => (
         <Link to={`/chat/${chatId}`} key={chatId}>
             <ListItem button>
-                <ListItemText primary={<Typography>{chats[chatId].name}</Typography>}/>
+                <ListItemText primary={<Typography>{chats[chatId].name}</Typography>} />
             </ListItem>
         </Link>
     ));
@@ -33,7 +34,6 @@ const ChatsList = () => {
             {ListItems}
             <form onSubmit={onSubmit}>
                 <TextField
-                    className='chat-list__input'
                     type='text'
                     label='Добавить чат'
                     onChange={onValueChange}

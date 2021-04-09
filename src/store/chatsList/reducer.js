@@ -1,4 +1,4 @@
-import {ADD_CHAT} from "./types";
+import {ADD_CHAT} from './types';
 
 const initialState = {};
 
