@@ -16,7 +16,7 @@ export default class Form extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.form(this.state.text);
+        this.props.handlerMessage(this.state.text);
         this.setState({
             text: ''
         });
@@ -24,12 +24,6 @@ export default class Form extends Component {
 
     componentDidMount() {
         this.textInput.current.focus();
-    }
-
-    componentDidUpdate(prevProps) {
-        if (Object.keys(this.props.chatId) !== Object.keys(prevProps.chatId)) {
-            this.textInput.current.focus();
-        }
     }
 
     render() {
