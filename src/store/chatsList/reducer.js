@@ -1,6 +1,8 @@
 import {ADD_CHAT} from './types';
 
-const initialState = {};
+const initialState = {
+    1: { name: 'Основной чат',  messageList: []}
+};
 
 export const chatsListReducer = (state = initialState, action) => {
     switch (action.type) {

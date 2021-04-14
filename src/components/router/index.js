@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import App from '@components/app';
 import Header from '@components/header';
 import Profile from '@components/profile';
@@ -7,7 +7,7 @@ import Profile from '@components/profile';
 class Router extends Component{
     render() {
         return (
-            <div>
+            <BrowserRouter>
                 <Header text='Чат' />
                 <Switch>
                     <Route exact path='/'>
@@ -24,7 +24,7 @@ class Router extends Component{
                     />
                     <Redirect to='/' />
                 </Switch>
-            </div>
+            </BrowserRouter>
         );
     }
 }
