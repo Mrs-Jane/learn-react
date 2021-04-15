@@ -22,7 +22,9 @@ const ChatsList = () => {
     }, [inputValue, dispatch]);
 
     const ListItems = Object.keys(chats).map(chatId => (
-        <Link to={`/chat/${chatId}`} key={chatId}>
+        <Link to={`/chat/${chatId}`} key={chatId} className={
+            `chat__list-link ${chats[chatId].isBlink ? 'blink' : ''}`
+        }>
             <ListItem button>
                 <ListItemText primary={<Typography>{chats[chatId].name}</Typography>} />
             </ListItem>

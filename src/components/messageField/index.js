@@ -1,4 +1,4 @@
-import {useCallback, useEffect} from 'react';
+import {useCallback} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Message from '@components/message';
 import Form from '@components/form';
@@ -21,23 +21,6 @@ const MessageField = ({chatId}) => {
             dispatch(addMessage(text, author, chatId));
         }
     }, [dispatch, chatId]);
-
-
-    useEffect(() => {
-        let timer;
-        const messageList = messages[chatId] || [];
-        const prevMessage = messageList.length && messageList[messageList.length - 1];
-
-        if (prevMessage && prevMessage.author !== AUTHORS.BOT) {
-            timer = setTimeout(() => {
-                handlerMessage(`Бот ответил вам на сообщение "${prevMessage.text}"`, AUTHORS.BOT);
-            }, 2000);
-        }
-
-        return () => {
-            clearTimeout(timer);
-        };
-    }, [messages, chatId, handlerMessage]);
 
     return (
         <div className='chat__box'>
