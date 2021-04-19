@@ -3,11 +3,11 @@ import {AUTHORS} from '@utils/constants';
 import {addBlink} from "@store/chatsList/actions";
 
 export const addMessage = (text, author, chatId) =>
-    (dispatch, getStore) => {
+    (dispatch, getState) => {
         dispatch({type: ADD_MESSAGE, text, author, chatId});
 
         if (author === AUTHORS.ME) {
-            const messageList = getStore().messages[chatId] || [];
+            const messageList = getState().messages[chatId] || [];
             const prevMessage = messageList.length && messageList[messageList.length - 1];
 
             if (prevMessage && prevMessage.author !== AUTHORS.BOT) {

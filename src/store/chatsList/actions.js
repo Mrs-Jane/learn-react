@@ -14,13 +14,11 @@ export const addBlink = (id, blink) =>
             blink
         });
 
-        if (addBlink) {
-            setTimeout(() => {
-                dispatch({
-                    type: ADD_BLINK,
-                    id,
-                    blink: false
-                });
-            }, 500);
-        }
+        setTimeout(() => {
+            dispatch({
+                type: ADD_BLINK,
+                id,
+                blink: false
+            });
+        }, 500);
     }
