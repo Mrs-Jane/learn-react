@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Mrs-Jane/learn-react#readme",
   "dependencies": {
     "core-js": "^3.9.1",
+    "axios": "^0.21.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
