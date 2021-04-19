@@ -17,6 +17,10 @@ body{
     -moz-osx-font-smoothing: grayscale;
 }
 
+a{
+    text-decoration: none;
+}
+
 .chat{
     &__wrap{
         max-width: 80%;
@@ -59,6 +63,15 @@ body{
         margin-right: 25px;
     }
 
+    &__list-link{
+        display: block;
+        border-bottom: 1px solid #ddd;
+
+        &.blink{
+            animation: blinker 1s linear infinite;
+        }
+    }
+
     &__box{
         display: flex;
         flex-direction: column;
@@ -94,5 +107,13 @@ body{
     &__form{
         display: flex;
         margin-top: 30px;
+    }
+}
+
+@keyframes blinker{
+    50%{
+        background: #c8e1ff;
+        border-color: transparent;
+        border-radius: 4px;
     }
 }
